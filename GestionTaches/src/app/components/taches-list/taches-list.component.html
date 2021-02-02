@@ -1,0 +1,61 @@
+<div class="taches">
+    <div class="menu">menu</div>
+    <div class="content">
+        <h1>Gestion de tache</h1>
+        <div class="search">
+            <div class="client">
+                Client 
+            <input (keyup)="searchClient()"  [(ngModel)]="client"  >
+            
+            </div>
+            <div class="client">
+                Projet
+                <select name="selectProjet"  id="selectProjet">
+                    <option value=""></option>
+                    <option *ngFor="let tache of taches" value="projet1">{{tache.projet}}</option>
+                </select>
+            </div>
+            
+        </div>
+        <table>
+            <tr>
+              <th>Référence Taches</th>
+              <th>Client</th>
+              <th>Projet</th>
+              <th>Interveant</th>
+              <th>ChargeHj</th>
+              <th>Activité</th>
+              <th>Technologies</th>
+            </tr>
+            <tr *ngFor="let tache of taches">
+              <td>{{tache.reference}}</td>
+              <td>{{tache.client}}</td>
+              <td>{{tache.projet}}</td>
+              <td>{{tache.intervenant}}</td>
+              <td>{{tache.chargHj}}</td>
+              <td>{{tache.activite}}</td>
+              <td>{{tache.technologie}}</td>
+            </tr>
+          </table>
+          <div class="stat">
+              <div class="graph">
+                <app-graphe></app-graphe>
+             </div>
+              <div class="updateTech">
+                <div class="wrapper">
+                    <header>technologie</header>
+                    <div class="inputfield">
+                        <input type="text" placeholder="nouvelle technologie" [formControl]="technologie.technologie"  name="technologie" id="technologie">
+                        <button (click)="addNewTech()"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <ul class="technologie" >
+                        <li *ngFor="let tech of techs"> {{tech.technologie}}<span (click)="deleteTutorial(tech)"  class="delete" ><i class="fas fa-trash"></i></span>
+                        <span class="update"  ><i class="fas fa-pen"></i></span></li>
+                    </ul>
+                    
+                </div>
+              </div>
+          </div>
+        
+    </div>
+</div>

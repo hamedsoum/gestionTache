@@ -1,0 +1,24 @@
+
+<div class="graphe">
+    <div class="projetName">
+      <form >
+        <mat-form-field appearance="fill">
+          <mat-label>selectionner un Projet</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="state">
+            <mat-option (click)="searchGraphbyProjet()" *ngFor="let state of states" [value]="state.projet">
+              {{state.projet}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+<div  style="display:flex; flex-direction:column; width: 360px;">
+        <h3 style="text-align:center">avancement des taches du projet  {{selectedValue}} en % </h3>
+        <canvas *ngFor="let projet of projets" baseChart
+                    [data]="[projet.tache1,projet.tache2,projet.tache3,projet.tache4]"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+      </div>
+</div>
